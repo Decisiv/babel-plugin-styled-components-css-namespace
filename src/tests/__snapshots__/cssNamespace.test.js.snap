@@ -29,11 +29,11 @@ const MyStyledComponent = styled.div\`
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
-}
 
-  && {
+  & {
     border: 1px solid black;
   }
+}
 \`;
 export default MyStyledComponent;
 "
@@ -327,12 +327,12 @@ const MyStyledComponent = styled.div\`
   font-size: 30px;
   padding: 20px;
 
-  \${props => props.isDark ? 'color: red' : 'color: white'};
-}
-
-  #different-wrapper & {
+  & {
     border: 1px solid black;
   }
+
+  \${props => props.isDark ? 'color: red' : 'color: white'};
+}
 \`;
 export default MyStyledComponent;
 "
@@ -360,12 +360,10 @@ const styled = {
 const MyStyledComponent = styled.div\`
 && {
   background-color: red;
-}
   @media only screen and (min-width: 426px) {
-&& {
-    background-color: blue
-}
+    background-color: blue;
   }
+}
 \`;
 export default MyStyledComponent;
 "
@@ -400,11 +398,11 @@ const MyStyledComponent = styled.div\`
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
-}
 
-  #different-wrapper &:hover {
+  &:hover {
     \${props => props.isDark ? 'color: red' : 'color: white'};
   }
+}
 \`;
 export default MyStyledComponent;
 "
@@ -545,17 +543,17 @@ export default styled.div\`
 
   \${props => props.styles};
 
-  \${props => props.moreStyles};
-}
-
-  .class-wrapper .other-wrapper &:hover {
+  &:hover {
     border-color: \${props => props.hoverBorder};
   }
 
-  .class-wrapper .other-wrapper &:active {
+  &:active {
     border-color: \${props => props.activeBorder};
     \${props.activeStyles};
   }
+
+  \${props => props.moreStyles};
+}
 \`;
 "
 `;
@@ -577,9 +575,11 @@ const styled = {
 
 };
 export default styled.input\`
-#different-wrapper && {
+#different-wrapper & {
+  && {
     border: \${props => props.borderWidth} solid \${props => props.borderColor};
   }
+}
 \`;
 "
 `;
@@ -607,13 +607,13 @@ const Child = styled.span;
 export default styled.div\`
 #different-wrapper & {
   position: relative;
-}
-  #different-wrapper & \${Child} {
+  \${Child} {
     \${props => props.childStyles};
   }
-  #different-wrapper \${Child} + &, #different-wrapper & + \${Child} {
+  \${Child} + &, & + \${Child} {
     margin-right: \${props => props.spaceBetween};
   }
+}
 \`;
 "
 `;
@@ -647,11 +647,11 @@ body .specific .rule & {
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
-}
 
-  body .specific .rule & {
+  & {
     border: 1px solid black;
   }
+}
 \`;
 export default MyStyledComponent;
 "
@@ -686,11 +686,11 @@ const MyStyledComponent = styled.div\`
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
-}
 
-  .moreSpecific & {
+  & {
     border: 1px solid black;
   }
+}
 \`;
 export default MyStyledComponent;
 "
@@ -725,11 +725,11 @@ const MyStyledComponent = styled.div\`
   color: \${props => props.isDark ? 'white' : 'navy'};
   font-size: 30px;
   padding: 20px;
-}
 
-  .specific .verySpecific .extraSpecific & {
+  & {
     border: 1px solid black;
   }
+}
 \`;
 export default MyStyledComponent;
 "

@@ -9,9 +9,9 @@ import {
 } from 'babel-plugin-styled-components/lib/utils/detectors';
 import { loopWhile } from 'deasync';
 import postcss from 'postcss';
-import parentSelector from 'postcss-parent-selector';
-import unnest from 'postcss-nested';
 import safeParser from 'postcss-safe-parser';
+
+import parentSelector from '../processors/add-parent-selector';
 
 const EXPRESSION = 'fake-element-placeholder';
 const FAKE_VALUE = 'fakevalue';
@@ -100,7 +100,7 @@ export default (path, state) => {
 
   // Adding safeparser first helps us try to format any other invalid css we may encounter like
   // using js comments (//) instead of css comments (/*).
-  const processors = [safeParser, unnest];
+  const processors = [safeParser];
   if (!doesPrefixStartsWithSelfReference) {
     processors.push(parentSelector({ selector: cssNamespace }));
   }
